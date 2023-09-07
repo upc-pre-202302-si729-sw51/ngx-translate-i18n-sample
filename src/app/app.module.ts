@@ -10,13 +10,14 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import { HomeComponent } from './public/pages/home/home.component';
 import { TranslationSampleComponent } from './public/components/translation-sample/translation-sample.component';
+import { LanguageSelectionComponent } from './public/components/language-selection/language-selection.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TranslationSampleComponent], imports: [BrowserModule, HttpClientModule, TranslateModule.forRoot({
+  declarations: [AppComponent, HomeComponent, TranslationSampleComponent, LanguageSelectionComponent], imports: [BrowserModule, HttpClientModule, TranslateModule.forRoot({
     defaultLanguage: 'en', loader: {
       provide: TranslateLoader, useFactory: (createTranslateLoader), deps: [HttpClient]
     }
