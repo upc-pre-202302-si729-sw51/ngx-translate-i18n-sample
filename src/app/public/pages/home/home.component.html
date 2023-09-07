@@ -1,1 +1,8 @@
-<p>home works!</p>
+<mat-toolbar color="primary">
+  <span>NGX Translate Sample App</span>
+  <span class="spacer"></span>
+  <span>
+    <app-language-selection></app-language-selection>
+  </span>
+</mat-toolbar>
+<app-translation-sample [fullName]="developerName"></app-translation-sample>
