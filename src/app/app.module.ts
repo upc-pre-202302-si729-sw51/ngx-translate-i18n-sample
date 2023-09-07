@@ -1,18 +1,24 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
+import {AppComponent} from './app.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MatButtonModule} from "@angular/material/button";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent], imports: [BrowserModule, HttpClientModule, TranslateModule.forRoot({
+    defaultLanguage: 'en', loader: {
+      provide: TranslateLoader, useFactory: (createTranslateLoader), deps: [HttpClient]
+    }
+  }), MatButtonModule, MatToolbarModule, MatButtonToggleModule], providers: [], bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
